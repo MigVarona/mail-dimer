@@ -40,7 +40,7 @@ def send_email():
             <p>quemavic@gmail.com</p>
             <p>+34 639 95 26 15</p>
             <p><a href='http://dimersiva.com'>dimersiva.com</a></p>
-            <img src="https://i.postimg.cc/QCJ4Zd2r/dimersivalogo.gif" alt="Image">
+            <img src="https://i.postimg.cc/QCJ4Zd2r/dimersivalogo.gif" width="200" alt="Image">
             """
             msg = Message(
                 subject,
