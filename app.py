@@ -26,7 +26,10 @@ def send_email():
         subject = "Desarrollo web con Realidad virtual y vídeos 360º"
 
         for recipient in recipients:
-            recipient_name = recipient.split('@')[0]
+            recipient_parts = recipient.split('@')
+            domain_parts = recipient_parts[1].split('.')
+            recipient_name = domain_parts[-2]  # Tomamos la penúltima parte del dominio
+
             personalized_body = f"""
             <p>Hola {recipient_name},</p>
             <p>Nos ponemos en contacto con vosotros porque creemos que nuestra experiencia en desarrollo web puede ser de gran interés para innovar en vuestras propuestas publicitarias.</p>
@@ -37,7 +40,6 @@ def send_email():
             <p>Nos encantaría tener la oportunidad de comentar cómo podemos colaborar. Estamos a su disposición para una reunión en la que podamos presentar nuestras ideas y responder cualquier pregunta que puedan tener.</p>
             <p>Saludos,<br>--<br>José María Vicente Pascual</p>
             <p>Desarrollador web y consultoría tecnológica</p>
-            <p>quemavic@gmail.com</p>
             <p>+34 639 95 26 15</p>
             <p><a href='http://dimersiva.com'>dimersiva.com</a></p>
             <img src="https://i.postimg.cc/QCJ4Zd2r/dimersivalogo.gif" width="200" alt="Image">
@@ -54,8 +56,6 @@ def send_email():
     except Exception as e:
         app.logger.error('Failed to send email', exc_info=True)
         return jsonify({"error": str(e)}), 500
-
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
