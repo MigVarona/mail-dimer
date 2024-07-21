@@ -40,13 +40,14 @@ def send_email():
             <p>quemavic@gmail.com</p>
             <p>+34 639 95 26 15</p>
             <p><a href='http://dimersiva.com'>dimersiva.com</a></p>
+            <img src="https://i.postimg.cc/QCJ4Zd2r/dimersivalogo.gif" alt="Image">
             """
             msg = Message(
                 subject,
                 sender=app.config['MAIL_USERNAME'],
                 recipients=[recipient]
             )
-            msg.html = personalized_body  # Set the body as HTML
+            msg.html = personalized_body  
             mail.send(msg)
 
         return jsonify({"message": "Emails sent"}), 200
