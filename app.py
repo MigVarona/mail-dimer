@@ -52,7 +52,6 @@ def send_email():
             msg.html = personalized_body  
             mail.send(msg)
 
-
         return jsonify({"message": "Emails sent"}), 200
     except Exception as e:
         app.logger.error('Failed to send email', exc_info=True)
